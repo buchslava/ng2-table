@@ -1,8 +1,7 @@
 /// <reference path='../../../tsd.d.ts' />
 
 import {
-  Component, Directive, View, EventEmitter, Host,
-  OnInit,
+  Component, View, EventEmitter, OnInit,
   CORE_DIRECTIVES, NgClass, FORM_DIRECTIVES
 } from 'angular2/angular2';
 
@@ -25,20 +24,28 @@ export class TableDemo implements OnInit {
     {title: 'Name', name: 'name'},
     {title: 'Position', name: 'position', sort: false},
     {title: 'Office', name: 'office', sort: 'asc'},
-    {title: 'Extn.', name: 'ext', sort: 'desc'},
+    {title: 'Extn.', name: 'ext', sort: 'desc', fixedWidth: '9%'},
     {title: 'Start date', name: 'startDate'},
     {title: 'Salary', name: 'salary'}
   ];
   public length:number = 0;
   public config:any = {
-    paging: {page: 1, itemsPerPage: 10, maxSize: 5},
+    // paging: {page: 1, itemsPerPage: 10, maxSize: 5},
     sorting: {columns: []},
     filtering: {filterString: '', columnName: 'position'}
+    // clusterize: {
+    //  scrollId: 'scrollElement',
+    //  contentId: 'contentElement'
+    // }
   };
 
   private data:Array<any> = TableData;
 
   constructor() {
+    for (let i = 2; i; i--) {
+      this.data = this.data.concat(this.data);
+    }
+    console.log(this.data.length);
     this.length = this.data.length;
   }
 
