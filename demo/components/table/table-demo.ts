@@ -32,17 +32,17 @@ export class TableDemo implements OnInit {
   public config:any = {
     // paging: {page: 1, itemsPerPage: 10, maxSize: 5},
     sorting: {columns: []},
-    filtering: {filterString: '', columnName: 'position'}
-    // clusterize: {
-    //  scrollId: 'scrollElement',
-    //  contentId: 'contentElement'
-    // }
+    filtering: {filterString: '', columnName: 'position'},
+    clusterize: {
+      scrollId: 'scrollElement',
+      contentId: 'contentElement'
+    }
   };
 
   private data:Array<any> = TableData;
 
   constructor() {
-    for (let i = 2; i; i--) {
+    for (let i = 7; i; i--) {
       this.data = this.data.concat(this.data);
     }
     console.log(this.data.length);
